@@ -3,7 +3,7 @@ _courses: {
   firsts: [],
   seconds: [],
   pastas: [],
-  mains: [],
+  mains: []
   
 //  set firsts(firstsIn) {},
 //  set seconds(secondsIn) {},
@@ -44,11 +44,11 @@ _courses: {
     let totalPrice = first.price + second.price + pasta.price + main.price;
     let tip = Math.floor(totalPrice * .22);
     if ((totalPrice + tip) < budget) {
-    return `Your meal is ${first.name}; followed by ${second.name}; then ${pasta.name}; and finally ${main.name}. The price is $${totalPrice}, and tip is $${tip}.`;
+    return `Your meal is ${first.name}; followed by ${second.name}; then ${pasta.name}; and finally ${main.name}. The price is $${totalPrice}, and tip is $${tip}.`
     } else {
       return this.generateRandomMeal(budget);
+  } 
   }
-  
 };
 
 menu.addDishToCourse('firsts', 'Pancetta, Agrodolce, Spicy Mayo,', 5.00);
@@ -68,16 +68,15 @@ menu.addDishToCourse('pastas', 'Gemelli Verde, Maitake, Goat Cheese', 17.00);
 menu.addDishToCourse('pastas', 'Mafaldine, Pork Shoulder Ragu, Cacciocavallo', 18.00);
 menu.addDishToCourse('pastas', 'Conchiglie, Lump Crab, Sea Urchin Butter', 26.00);
 menu.addDishToCourse('pastas', 'Special: Campanele Verde, Octopus Ragu, Puttanesca', 26.00);
+menu.addDishToCourse('pastas', 'Nerone, Frutti di Mare, Strattu', 36.00);
+menu.addDishToCourse('pastas', 'Coppa, Panzanella, Grilled Romaine', 26.00);
 
-
-menu.addDishToCourse('mains', 'Nerone, Frutti di Mare, Strattu', 36.00);
-menu.addDishToCourse('mains', 'Coppa, Panzanella, Grilled Romaine', 26.00);
 menu.addDishToCourse('mains', 'Buttermilk Pannacotta, Barolo Chinato Cherrry Conserva', 11.00);
 menu.addDishToCourse('mains', 'Amaro Montenegro, Espresso', 8.00);
 menu.addDishToCourse('mains', 'Don Ciccio Limoncello, Chamomile Tea', 9.00);
 
 
 
-
-let meal = menu.generateRandomMeal(40);
+let budget = 55;
+let meal = menu.generateRandomMeal(budget);
 console.log(meal);
