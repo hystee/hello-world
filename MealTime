@@ -1,0 +1,62 @@
+const menu  = { 
+_courses: {
+  apps: [],
+  mains: [],
+  desserts: [],
+  
+//  set apps(appsIn) {},
+//  set mains(mainsIn) {},
+//  set desserts(dessertsIn) {},
+  
+//  get apps() {},
+//  get mains() {},
+//  get desserts() {}
+},
+  get courses() {
+    return {
+    apps: this._courses.apps,
+    mains: this._courses.mains,
+    desserts: this._courses.desserts }
+  },
+  
+  addDishToCourse(courseName, dishName, dishPrice) {
+    const dish = {
+      name: dishName,
+      price: dishPrice
+    };
+    this._courses[courseName].push(dish);
+  },
+  
+  getRandomDishFromCourse(courseName) {
+    let dishes = this._courses[courseName];
+    return dishes[Math.floor(Math.random() * dishes.length)];
+  },
+  
+  generateRandomMeal() {
+    let appetizer = this.getRandomDishFromCourse('apps');
+    let main = this.getRandomDishFromCourse('mains');
+    let dessert = this.getRandomDishFromCourse('desserts');
+    let totalPrice = appetizer.price + main.price + dessert.price;
+    let tip = Math.floor(totalPrice * .22);
+    return `Your meal is ${appetizer.name}; followed by ${main.name}; ending with ${dessert.name}. The price is $${totalPrice}, and tip is $${tip}.`;
+  }
+  
+};
+
+menu.addDishToCourse('apps', 'Pancetta, Agrodolce, Spicy Mayo,', 5.00);
+menu.addDishToCourse('apps', 'Sunchoke, Greek Yogurt, Hazelnut Pesto', 1.50);
+menu.addDishToCourse('apps', 'Fegatini, Pickled Onion, Crostini', 6.00);
+
+menu.addDishToCourse('mains', 'Capanele Nero, Octopus Ragu, Puttanesca', 23.00);
+menu.addDishToCourse('mains', 'Branzino, Fennel, Pepperonata', 32.00);
+menu.addDishToCourse('mains', 'Gemelli Verde, Maitake, Goat Cheese', 21.00);
+
+menu.addDishToCourse('desserts', 'Brie and Apples', 8.00);
+menu.addDishToCourse('desserts', 'Parmigianno and Prunes', 9.00);
+menu.addDishToCourse('desserts', 'Chevre and Strawberries', 8.00);
+menu.addDishToCourse('desserts', 'Cheese & Fruit Platter', 15.00);
+
+
+
+let meal = menu.generateRandomMeal();
+console.log(meal);
