@@ -79,5 +79,5 @@ menu.addDishToCourse('mains', 'Don Ciccio Limoncello, Chamomile Tea', 9.00);
 
 
 
-let meal = menu.generateRandomMeal();
+let meal = menu.generateRandomMeal(40);
 console.log(meal);
