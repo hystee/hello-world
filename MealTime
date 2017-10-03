@@ -36,14 +36,17 @@ _courses: {
     return dishes[Math.floor(Math.random() * dishes.length)];
   },
   
-  generateRandomMeal() {
+  generateRandomMeal(budget) {
     let first = this.getRandomDishFromCourse('firsts');
     let second = this.getRandomDishFromCourse('seconds');
     let pasta = this.getRandomDishFromCourse('pastas');
     let main = this.getRandomDishFromCourse('mains');
     let totalPrice = first.price + second.price + pasta.price + main.price;
     let tip = Math.floor(totalPrice * .22);
+    if ((totalPrice + tip) < budget) {
     return `Your meal is ${first.name}; followed by ${second.name}; then ${pasta.name}; and finally ${main.name}. The price is $${totalPrice}, and tip is $${tip}.`;
+    } else {
+      return this.generateRandomMeal(budget);
   }
   
 };
