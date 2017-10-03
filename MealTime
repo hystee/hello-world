@@ -1,22 +1,26 @@
 const menu  = { 
 _courses: {
-  apps: [],
+  firsts: [],
+  seconds: [],
+  pastas: [],
   mains: [],
-  desserts: [],
   
-//  set apps(appsIn) {},
+//  set firsts(firstsIn) {},
+//  set seconds(secondsIn) {},
+//  set pastas(pastasIn) {},
 //  set mains(mainsIn) {},
-//  set desserts(dessertsIn) {},
   
-//  get apps() {},
-//  get mains() {},
-//  get desserts() {}
+//  get firsts() {},
+//  get seconds() {},
+//  get pastas() {},
+//  get mains() {}
 },
   get courses() {
     return {
-    apps: this._courses.apps,
-    mains: this._courses.mains,
-    desserts: this._courses.desserts }
+    firsts: this._courses.firsts,
+    seconds: this._courses.seconds,
+    pastas: this._courses.pastas,
+    mains: this._courses.mains }
   },
   
   addDishToCourse(courseName, dishName, dishPrice) {
@@ -33,28 +37,42 @@ _courses: {
   },
   
   generateRandomMeal() {
-    let appetizer = this.getRandomDishFromCourse('apps');
+    let first = this.getRandomDishFromCourse('firsts');
+    let second = this.getRandomDishFromCourse('seconds');
+    let pasta = this.getRandomDishFromCourse('pastas');
     let main = this.getRandomDishFromCourse('mains');
-    let dessert = this.getRandomDishFromCourse('desserts');
-    let totalPrice = appetizer.price + main.price + dessert.price;
+    let totalPrice = first.price + second.price + pasta.price + main.price;
     let tip = Math.floor(totalPrice * .22);
-    return `Your meal is ${appetizer.name}; followed by ${main.name}; ending with ${dessert.name}. The price is $${totalPrice}, and tip is $${tip}.`;
+    return `Your meal is ${first.name}; followed by ${second.name}; then ${pasta.name}; and finally ${main.name}. The price is $${totalPrice}, and tip is $${tip}.`;
   }
   
 };
 
-menu.addDishToCourse('apps', 'Pancetta, Agrodolce, Spicy Mayo,', 5.00);
-menu.addDishToCourse('apps', 'Sunchoke, Greek Yogurt, Hazelnut Pesto', 1.50);
-menu.addDishToCourse('apps', 'Fegatini, Pickled Onion, Crostini', 6.00);
+menu.addDishToCourse('firsts', 'Pancetta, Agrodolce, Spicy Mayo,', 5.00);
+menu.addDishToCourse('firsts', 'Calamari, Squid Ink Mostarda, Black Garlic', 5.00);
+menu.addDishToCourse('firsts', 'Gambaretto, Salsa Verde, Lime', 7.00);
 
-menu.addDishToCourse('mains', 'Capanele Nero, Octopus Ragu, Puttanesca', 23.00);
-menu.addDishToCourse('mains', 'Branzino, Fennel, Pepperonata', 32.00);
-menu.addDishToCourse('mains', 'Gemelli Verde, Maitake, Goat Cheese', 21.00);
+menu.addDishToCourse('seconds', 'Vongole, Parsley Pesto, Guanciale', 12.00);
+menu.addDishToCourse('seconds', 'Tartare, Caponata Verde, Umeboshi', 16.00);
+menu.addDishToCourse('seconds', 'Lattuga, Bagna Cauda, Bottarga', 13.00);
+menu.addDishToCourse('seconds', 'Carota, Popppy Seed, Coriander', 12.00);
+menu.addDishToCourse('seconds', 'Sunchoke, Hazelnut Pesto, Yogurt', 15.00);
+menu.addDishToCourse('seconds', 'Special: Fegatini Pate, Pickled Onion, Crostini', 12.00);
 
-menu.addDishToCourse('desserts', 'Brie and Apples', 8.00);
-menu.addDishToCourse('desserts', 'Parmigianno and Prunes', 9.00);
-menu.addDishToCourse('desserts', 'Chevre and Strawberries', 8.00);
-menu.addDishToCourse('desserts', 'Cheese & Fruit Platter', 15.00);
+menu.addDishToCourse('pastas', 'Torcia, Bolognese, Parmigiano', 18.00);
+menu.addDishToCourse('pastas', 'Lumache, Burgundy Snails, Sicilian Almond Pesto', 19.00);
+menu.addDishToCourse('pastas', 'Gemelli Verde, Maitake, Goat Cheese', 17.00);
+menu.addDishToCourse('pastas', 'Mafaldine, Pork Shoulder Ragu, Cacciocavallo', 18.00);
+menu.addDishToCourse('pastas', 'Conchiglie, Lump Crab, Sea Urchin Butter', 26.00);
+menu.addDishToCourse('pastas', 'Special: Campanele Verde, Octopus Ragu, Puttanesca', 26.00);
+
+
+menu.addDishToCourse('mains', 'Nerone, Frutti di Mare, Strattu', 36.00);
+menu.addDishToCourse('mains', 'Coppa, Panzanella, Grilled Romaine', 26.00);
+menu.addDishToCourse('mains', 'Buttermilk Pannacotta, Barolo Chinato Cherrry Conserva', 11.00);
+menu.addDishToCourse('mains', 'Amaro Montenegro, Espresso', 8.00);
+menu.addDishToCourse('mains', 'Don Ciccio Limoncello, Chamomile Tea', 9.00);
+
 
 
 
